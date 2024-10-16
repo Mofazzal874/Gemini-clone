@@ -7,6 +7,10 @@ WORKDIR /app
 # Step 3: Copy the package.json and package-lock.json to the working directory
 COPY package.json package-lock.json ./
 
+ARG VITE_API_KEY
+
+ENV VITE_API_KEY=$VITE_API_KEY
+
 # Step 4: Install dependencies
 RUN npm install
 

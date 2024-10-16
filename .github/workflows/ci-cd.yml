@@ -27,7 +27,7 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t mofazzal874/gemini-clone:latest .
+          docker build --build-arg VITE_API_KEY=${{ secrets.GOOGLE_API_KEY }} -t mofazzal874/gemini-clone:latest .
           docker push mofazzal874/gemini-clone:latest
 
   deploy:
@@ -60,7 +60,4 @@ jobs:
             #echo "VITE_API_KEY=${{ secrets.GOOGLE_API_KEY }}" > /root/gemini-clone/.env
 
             # Run the Docker container with the .env file, passing the API key as an environment variable
-            docker run -d -p 9000:80 \
-              --name gemini-clone \
-              -e "VITE_API_KEY=${{ secrets.GOOGLE_API_KEY }}" \
-              mofazzal874/gemini-clone:latest
+            docker run -d -p 9000:80 --name gemini-clone mofazzal874/gemini-clone:latest
