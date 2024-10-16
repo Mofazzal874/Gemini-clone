@@ -19,7 +19,7 @@ export const Main = () => {
                     ? <>
 
                         <div className="greet">
-                            <p><span>Hello, Developer</span></p>
+                            <p><span>Hello...😊</span></p>
                             <p>How can I help you today?</p>
                         </div>
                         <div className="cards">
