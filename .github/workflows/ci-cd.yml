@@ -57,10 +57,10 @@ jobs:
             docker rm gemini-clone || true
 
             # Create .env file with the API key in the project directory
-            echo "VITE_API_KEY=${{ secrets.GOOGLE_API_KEY }}" > /root/gemini-clone/.env
+            #echo "VITE_API_KEY=${{ secrets.GOOGLE_API_KEY }}" > /root/gemini-clone/.env
 
             # Run the Docker container with the .env file, passing the API key as an environment variable
             docker run -d -p 9000:80 \
               --name gemini-clone \
-              --env-file /root/gemini-clone/.env \
+              -e VITE_API_KEY=${{ secrets.GOOGLE_API_KEY }} \
               mofazzal874/gemini-clone:latest

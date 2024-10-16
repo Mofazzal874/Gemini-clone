@@ -4,6 +4,8 @@ import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/ge
 // Use the environment variable for the API key
 const apiKey = import.meta.env.VITE_API_KEY; 
 
+
+
 // Initialize the Generative AI client
 const genAI = new GoogleGenerativeAI(apiKey);
 
