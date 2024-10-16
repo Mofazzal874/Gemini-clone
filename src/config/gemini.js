@@ -29,6 +29,7 @@ async function run(prompt) {
     history: [],
   });
 
+  console.log(apiKey)
   // Send the message and receive the result
   const result = await chatSession.sendMessage(prompt);
   

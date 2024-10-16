@@ -62,5 +62,5 @@ jobs:
             # Run the Docker container with the .env file, passing the API key as an environment variable
             docker run -d -p 9000:80 \
               --name gemini-clone \
-              -e VITE_API_KEY=${{ secrets.GOOGLE_API_KEY }} \
+              -e "VITE_API_KEY=${{ secrets.GOOGLE_API_KEY }}" \
               mofazzal874/gemini-clone:latest
