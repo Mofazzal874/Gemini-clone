@@ -43,7 +43,21 @@ jobs:
           password: ${{ secrets.CLOUD_SERVER_PASSWORD }}
           script: |
             set -e  # Exit immediately if a command fails
+            
+            # Create the project directory if it doesn't exist
+            mkdir -p /root/gemini-clone
+            
+            # Create .env file with the API key
+            echo "VITE_API_KEY=${{ secrets.GOOGLE_API_KEY }}" > /root/gemini-clone/.env
+            
+            # Pull the latest Docker image
             docker pull mofazzal874/gemini-clone:latest
-            docker stop gemini-clone || true  # Stop existing container if it exists
-            docker rm gemini-clone || true  # Remove the container if it exists
+            
+            # Stop existing container if it exists
+            docker stop gemini-clone || true
+            
+            # Remove the container if it exists
+            docker rm gemini-clone || true
+            
+            # Run the Docker container
             docker run -d -p 80:80 --name gemini-clone mofazzal874/gemini-clone:latest
